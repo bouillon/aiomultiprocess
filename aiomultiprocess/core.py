@@ -100,7 +100,8 @@ class Process:
             target=target or not_implemented,
             args=args or (),
             kwargs=kwargs or {},
-            namespace=get_manager().Namespace(),
+            # see https://github.com/jreese/aiomultiprocess/issues/42
+            namespace=None, #get_manager().Namespace(),
             initializer=initializer,
             initargs=initargs,
         )
